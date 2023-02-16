@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app-a:
+    image: app-a:2.0
+    networks:
+      rede6hosts:
+        ipv4_address: 192.168.0.2
+    ports: 
+      - 5000:5000
+  app-b:
+    image: app-b:2.1
+    command: bash -c "python app.py"
+    networks:
+      rede6hosts:
+        ipv4_address: 192.168.0.4
+    depends_on:
+      - app-a
+
+networks:
+  rede6hosts:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/29
+          gateway: 192.168.0.1
+   
