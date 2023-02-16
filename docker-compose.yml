@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services:
   app-a:
@@ -24,4 +24,3 @@ networks:
       config:
         - subnet: 192.168.0.0/29
           gateway: 192.168.0.1
-   
